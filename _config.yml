@@ -1,0 +1,82 @@
+# Site settings
+title: Genirsx's Blog
+description: Welcome to my personal blog where I share thoughts on technology, programming, and life.
+baseurl: ""
+url: "https://genirsx.github.io"
+
+# Author settings
+author:
+  name: Genirsx
+  email: genirsx@example.com
+  bio: Developer, Tech Enthusiast, and Lifelong Learner
+  avatar: /assets/images/avatar.jpg
+  github: Genirsx
+  twitter: genirsx
+  linkedin: genirsx
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:year/:month/:day/:title/
+
+# Jekyll plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# Pagination
+paginate: 5
+paginate_path: "/page:num/"
+
+# Navigation
+navigation:
+  - title: Home
+    url: /
+  - title: About
+    url: /about/
+  - title: Blog
+    url: /blog/
+  - title: Contact
+    url: /contact/
+
+# Social links
+social:
+  github: https://github.com/Genirsx
+  twitter: https://twitter.com/genirsx
+  linkedin: https://linkedin.com/in/genirsx
+  email: mailto:genirsx@example.com
+
+# SEO settings
+google_analytics: # Add your Google Analytics ID here
+twitter:
+  username: genirsx
+  card: summary
+
+# Collections
+collections:
+  posts:
+    output: true
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Genirsx"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"

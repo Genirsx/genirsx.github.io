@@ -1,0 +1,91 @@
+---
+layout: default
+title: Home
+---
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Welcome to {{ site.title }}</h1>
+                <p class="hero-description">{{ site.description }}</p>
+                <div class="hero-buttons">
+                    <a href="/blog/" class="btn btn-primary">Read My Blog</a>
+                    <a href="/about/" class="btn btn-secondary">About Me</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="avatar-placeholder">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="recent-posts">
+    <div class="container">
+        <h2>Recent Posts</h2>
+        
+        {% assign recent_posts = site.posts | limit: 3 %}
+        {% if recent_posts.size > 0 %}
+            <div class="posts-grid">
+                {% for post in recent_posts %}
+                    <article class="post-card">
+                        <header class="post-card-header">
+                            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+                            <div class="post-card-meta">
+                                <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+                                {% if post.categories.size > 0 %}
+                                    • <span class="category">{{ post.categories.first }}</span>
+                                {% endif %}
+                            </div>
+                        </header>
+                        <div class="post-card-content">
+                            <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+                        </div>
+                        <footer class="post-card-footer">
+                            <a href="{{ post.url | relative_url }}" class="read-more">Read More →</a>
+                        </footer>
+                    </article>
+                {% endfor %}
+            </div>
+            
+            <div class="view-all-posts">
+                <a href="/blog/" class="btn btn-outline">View All Posts</a>
+            </div>
+        {% else %}
+            <div class="no-posts">
+                <p>No posts yet. Check back soon for new content!</p>
+                <a href="/about/" class="btn btn-outline">Learn More About Me</a>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<section class="about-preview">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>About Me</h2>
+                <p>{{ site.author.bio }}</p>
+                <p>I'm passionate about technology, coding, and sharing knowledge with the community. Through this blog, I share my experiences, tutorials, and thoughts on various topics.</p>
+                <a href="/about/" class="btn btn-outline">Learn More</a>
+            </div>
+            <div class="about-stats">
+                <div class="stat">
+                    <div class="stat-number">{{ site.posts.size }}</div>
+                    <div class="stat-label">Blog Posts</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">{{ site.time | date: '%Y' | minus: 2020 }}+</div>
+                    <div class="stat-label">Years Coding</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Learning</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
